@@ -9,7 +9,7 @@ From this website, make your query and proceed to download your desired files as
 Move the downloaded package to TACC (Texas Advanced Computing Center) or a local server. This was done via rclone, linking google drive to TACC. 
 Once file has been moved, unzip the file using: 
 
-`cd {uploaded_dir}`
+`unzip {uploaded_dir}`
 
 Enter the directory: <br />  
 `cd {uploaded_dir}`  <br /> 
