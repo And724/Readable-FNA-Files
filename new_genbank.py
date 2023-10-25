@@ -57,10 +57,14 @@ def match_and_rename(genome_dict, infile_dir, outfile_dir):
 
     for filename in os.listdir(infile_dir):
         if filename.endswith(".fna"):
-            file_key = filename[:15] # Extract the key from the filename
-            if file_key in genome_dict:
-                new_name = genome_dict[file_key] + ".fasta"
+            file_key = filename[3:15] # Extract the key from the filename
+            if "GCA" + file_key in genome_dict or "GCF" + file_key in genome_dict:
+                try:
+                    new_name = genome_dict[("GCA" + file_key)]
+                except:
+                    new_name = genome_dict[("GCF" + file_key)]
                 new_name = replace_special_chars(new_name)
+                new_name = new_name + ".fasta"
                 new_path = os.path.join(outfile_dir, new_name)
                 old_path = os.path.join(infile_dir, filename)
                 shutil.move(old_path, new_path)
